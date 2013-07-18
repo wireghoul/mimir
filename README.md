@@ -1,4 +1,5 @@
 # Mimir 
+Mimir is a network traffic flow analysis backend for Visdom. It is currently under heavy development and the Dev branch will be the default while master exists as a "stable" branch as much as possible during early development processes.
 
 Mimir requires the GoAVL library available at http://code.google.com/p/go-avltree/
 
