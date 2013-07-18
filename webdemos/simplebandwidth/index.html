@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>Example ganking of data into smoothiecharts</title>
+<head>
+<script type="text/javascript" src="smoothie.js"></script>
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+
+// Randomly add a data point every 500ms
+var randomA = new TimeSeries();
+var randomB = new TimeSeries();
+setInterval(function() {
+		randomA.append(new Date().getTime(), Math.random() * 10000);
+		randomB.append(new Date().getTime(), Math.random() * 10000);
+		}, 1000);
+
+function queryjson() {
+	$.getJSON("api/json", function(json) {
+		$.each(json.flows, function(i,item){
+            		$("").attr("flowid", json.flows.flowid).appendTo("#JSON");
+		});
+	}
+}
+
+functio createTimeline() {
+	var chart = new SmoothieChart();
+	chart.addTimeSeries(randomA, { strokeStyle: 'rgba(255, 0, 0, 1)', fillStyle: 'rgba(255, 0, 0, 0.1)', lineWidth: 2 });
+	chart.addTimeSeries(randomB, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.1)', lineWidth: 2 });
+	chart.streamTo(document.getElementById("chart"), 1000);
+}
+</script>
+</head>
+<body onload="createTimeline()">
+<body onload="queryjson()">
+
+<p>A simple bandwidth graph from <em>Mimir</em></p>
+
+<canvas id="chart" width="1200" height="300"></canvas>
+
+<p id="JSON">SOME JSON:  </p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[DONE] Fix PCAP filters
+
+[DONE] Get FlowExecutive up and running (test multiple flow pairs running at once)
+
+[DONE] Fix the other end of the IPPcap traffic counter
+
+[DONE] Fix the dump-unusable-traffic flag to be a bool, have the feeder manage that pcap writer
+	- May also require making the pcap writer mutable
+
+[DONE] Add a GeoIP database so that we can geolocate IPs as they come in
+
+* Add a worker in the flow manager that tries to do reverse resolution on names to create "aliases" for IPs.
+
+* Fix webapi to correctly handle the flowExecutive (e.g. allow the api to request flow data from specific flow pairs, or all of them)
+
+* Move the storage structure for in memory hotpots to an AVL tree: http://code.google.com/p/go-avltree/
+
+* Build backing system (hot pot {active flows in a big ass map with time ranges as the key}, cold pot {Indexed files with time ranges as the key})
+
+* Build "catcher" that will try to dump all in memory flows out to the cold-pot on exit or crash
+
+[DONE] Put together a demo with smoothiecharts.
+
+* Fix IPFlowParser to correctly handle IPv6
+
+* Implement pcap file reader as a feeder so we can pull off of pcap files as well
+
+* Build timeline system to populate the hot-pot structure based on a sliding window of past data that reads from the cold pot (Replay feature).
+
+* Handle flows by entity ID and require client to request address information (a la geoip data. "what's 'address' for 445?")
+
+* Export CSV of all flows for reporting or whatever
