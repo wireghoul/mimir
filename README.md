@@ -5,6 +5,23 @@ Mimir requires the GoAVL library available at http://code.google.com/p/go-avltre
 
 To build the entire tree run 'go build' from the home directory.
 
+Mimir uses Visdom for a frontend: http://github.com/visdom/visdom
+
+## Quickstart Guide
+
+```shell
+git clone https://github.com/visdom/visdom.git
+cd visdom
+git clone https://github.com/visdom/mimir.git
+cd mimir
+go build
+wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
+gunzip GeoLiteCity.dat.gz
+./runscripts/quickstart.sh <interface_to_sniff>
+```
+
+Browse to http://your.host.here:8080
+
 ## Copyright and License
 Copyright 2013 Southfork Security, Inc.
 
