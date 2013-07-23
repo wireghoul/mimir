@@ -9,6 +9,17 @@ Mimir uses Visdom for a frontend: http://github.com/visdom/visdom
 
 ## Quickstart Guide
 
+### Install dependencies
+
+Mimir depends on libgeoip and libpcap for sniffing and geolocating network traffic.
+
+Ubuntu Example:
+
+```shell
+apt-get install git golang libgeoip-dev libpcap-dev
+```
+### Download and compile
+
 ```shell
 git clone https://github.com/visdom/visdom.git
 cd visdom
